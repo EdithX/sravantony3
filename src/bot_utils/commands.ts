@@ -1,25 +1,25 @@
 export const commands = {
     START:          'start',
-    MIRRORTAR:      'mirrorTar|mt',
-    MIRROR:         'mirror|m',
-    MIRROR_STATUS:  'mirrorStatus|ms',
-    LIST:           'list|l',
+    MIRRORTAR:      'tarmirror|tarmirror@EdithTar1Bot',
+    MIRROR:         'mirror|mirror@EdithTar1Bot',
+    MIRROR_STATUS:  'status|status@EdithTar1Bot',
+    LIST:           'list|list@EdithTar1Bot',
     GET_FOLDER:     'getFolder|gf',
-    CANCEL_MIRROR:  'cancelMirror|cm',
+    CANCEL_MIRROR:  'cancel|cancel@EdithTar1Bot',
     CANCEL_ALL:     'cancelAll|ca',
     STATS:          'stats',
     GET_LINK:       'getLink|gl',
-    CLONE:          'clone|c',
+    CLONE:          'clone|clone@EdithTar1Bot',
     ID:             'id',
     MF:             'mf',
-    TAR:            'tar|t',
-    UNZIP_MIRROR:   'unzipMirror|um',
-    COUT:           'count|cnt',
-    HELP:           'help|h',
+    TAR:            'tar|tar@EdithTar1Bot',
+    UNZIP_MIRROR:   'unzipmirror|unzipmirror@EdithTar1Bot',
+    COUT:           'count|count@EdithTar1Bot',
+    HELP:           'help|help@EdithTar1Bot',
     AUTHORIZE:      'authorize|a',
     UNAUTHORIZE:    'unauthorize|ua',
     RESTART:        'restart|r',
-    YTDL:           'ytdl|y'
+    YTDL:           'ytdl|ytdl@EdithTar1Bot'
 };
 
 export const commandsAfter: any = {
