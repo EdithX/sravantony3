@@ -1,5 +1,5 @@
 #Base Image
-FROM ghcr.io/sravantony2/sravantony3:master
+FROM https://github.com/sravantony2/sravantony3:master
 
 WORKDIR /bot/
 
