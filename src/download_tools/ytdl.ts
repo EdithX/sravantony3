@@ -7,12 +7,14 @@ import readline from 'readline';
 import cp from 'child_process';
 import { v4 as uuidv4 } from 'uuid';
 import driveTar = require('../drive/drive-tar');
+import driveZip = require('../drive/drive-zip');
 import { DlVars } from '../dl_model/detail';
 import fs from 'fs';
 import downloadUtils = require('../download_tools/utils');
 
 const dlDetails: DlVars = {
     isTar: false,
+    isZip: false,
     isUnzip: false,
     tgUsername: '',
     gid: '',
