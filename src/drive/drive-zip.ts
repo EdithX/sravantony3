@@ -5,7 +5,6 @@ import driveAuth = require('./drive-auth');
 import { google, drive_v3 } from 'googleapis';
 import { timeout } from './drive-clone';
 import msgTools = require('../bot_utils/msg-tools');
-import tar = require('./tar');
 import zip = require('./zip');
 import fsWalk = require('../fs-walk');
 import { DlVars } from "../dl_model/detail";
@@ -20,7 +19,7 @@ import { isDuplicateMirror } from './drive-list';
 const FOLDER_TYPE = 'application/vnd.google-apps.folder'
 const PARALLEL_LIMIT = 10 // The number of parallel network requests can be adjusted according to the network environment
 
-export async function driveDownloadAndTar(fileId: string, bot: TelegramBot, tarringMsg: TelegramBot.Message) {
+export async function driveDownloadAndTar(fileId: string, bot: TelegramBot, zippingMsg: TelegramBot.Message) {
     const dlDetails: DlVars = {
         isTar: false,
         isZip: true,
@@ -76,7 +75,7 @@ export async function driveDownloadAndTar(fileId: string, bot: TelegramBot, tarr
                         // make zip of the downloaded files
                         // start zipping
                         message = `Creating Zip: <code>${meta.data.name}</code>\n\n🤐All files download complete now making zip...`;
-                        msgTools.editMessage(bot, tarringMsg, message);
+                        msgTools.editMessage(bot, zippingMsg, message);
 
                         console.log('Starting archival');
                         var destName = originalFileName + '.zip';
@@ -86,8 +85,8 @@ export async function driveDownloadAndTar(fileId: string, bot: TelegramBot, tarr
                                 reject('Error while creating archive: ' + ziperr);
                             } else {
                                 console.log('Archive complete');
-                                message += `\n\n✔Making zip complete, starting file upload...`;
-                                msgTools.editMessage(bot, tarringMsg, message);
+                                message += `\n\n✔Making Zip complete, starting file upload...`;
+                                msgTools.editMessage(bot, zippingMsg, message);
                                 updateStatus(dlDetails, size, message, bot, zippingMsg);
                                 let statusInterval = setInterval(() => {
                                     updateStatus(dlDetails, size, message, bot, zippingMsg);
@@ -116,7 +115,7 @@ export async function driveDownloadAndTar(fileId: string, bot: TelegramBot, tarr
                                             finalMessage += '\n\n<i>Folders in Shared Drives can only be shared with members of the drive. Mirror as an archive if you need public links.</i>';
                                         }
                                         if (res.status) {
-                                            finalMessage += '\n\nNote: There might be somefiles which is not inside zip, because downloading failed.'
+                                            finalMessage += '\n\nNote: There might be somefiles which is not inside tar, because downloading failed.'
                                         }
                                     }
                                     downloadUtils.deleteDownloadedFile(dlDir);
