@@ -4,6 +4,7 @@ import driveDirectLink = require('../drive/drive-directLink');
 const Aria2 = require('aria2');
 import constants = require('../.constants');
 import tar = require('../drive/tar');
+import zip = require('../drive/zip');
 import filenameUtils = require('./filename-utils');
 import { DlVars } from '../dl_model/detail';
 import unzip = require('../drive/extract');
@@ -172,6 +173,36 @@ export function uploadFile(dlDetails: DlVars, filePath: string, fileSize: number
   } else {
     fileName = filenameUtils.getFileNameFromPath(filePath, null);
     realFilePath = filenameUtils.getActualDownloadPath(filePath);
+  }
+    if (dlDetails.isZip) {
+    if (filePath === realFilePath) {
+      // If there is only one file, do not archive
+      driveUploadFile(dlDetails, realFilePath, fileName, fileSize, callback);
+    } else {
+      checkDiskSpace(constants.ARIA_DOWNLOAD_LOCATION_ROOT).then(res => {
+        if (res.free > Number(fileSize)) {
+          console.log('Starting archival');
+          var destName = fileName + '.zip';
+          zip.archive(realFilePath, destName, (ziperr: string, size: number) => {
+            if (ziperr) {
+              callback(tarerr, dlDetails.gid, null, null, null, null, false);
+            } else {
+              console.log('Archive complete');
+              driveUploadFile(dlDetails, realFilePath + '.zip', destName, size, callback);
+            }
+          });
+        } else {
+          console.log('uploadFile: Not enough space, uploading without archiving');
+          driveUploadFile(dlDetails, realFilePath, fileName, fileSize, callback);
+        }
+      }).catch(err => {
+        console.log('uploadFile: checkDiskSpace: ' + err);
+        // Could not archive, so upload normally
+        driveUploadFile(dlDetails, realFilePath, fileName, fileSize, callback);
+      });
+    }
+  } else {
+    driveUploadFile(dlDetails, realFilePath, fileName, fileSize, callback);
   }
   if (dlDetails.isTar) {
     if (filePath === realFilePath) {
