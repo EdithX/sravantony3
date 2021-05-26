@@ -115,7 +115,7 @@ export async function driveDownloadAndTar(fileId: string, bot: TelegramBot, zipp
                                             finalMessage += '\n\n<i>Folders in Shared Drives can only be shared with members of the drive. Mirror as an archive if you need public links.</i>';
                                         }
                                         if (res.status) {
-                                            finalMessage += '\n\nNote: There might be somefiles which is not inside tar, because downloading failed.'
+                                            finalMessage += '\n\nNote: There might be somefiles which is not inside zip, because downloading failed.'
                                         }
                                     }
                                     downloadUtils.deleteDownloadedFile(dlDir);
