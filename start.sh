@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # To set a different value other than default(5), remove `#` from below line and replace the value
-#MAX_CONCURRENT_DOWNLOADS=5
+MAX_CONCURRENT_DOWNLOADS=20
 
 # Check if bot is deployed to heroku
 if [[ -n $DYNO ]]; then
