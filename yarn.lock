@@ -114,10 +114,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node-telegram-bot-api@^0.51.1":
-  version "0.51.1"
-  resolved "https://registry.npmjs.org/@types/node-telegram-bot-api/-/node-telegram-bot-api-0.51.1.tgz"
-  integrity sha512-1gPuW543XUgJBUCsNx6x+iJ3DuHNfU6edtsLu/0J0jCfDvQtA511BmHiODt+qre09AVIUCpd+vaf02/URS3QZQ==
+"@types/node-telegram-bot-api@^0.57.0":
+  version "0.57.0"
+  resolved "https://registry.yarnpkg.com/@types/node-telegram-bot-api/-/node-telegram-bot-api-0.57.0.tgz#ded3147d6da6377a0726463672038aa3f0fe605e"
+  integrity sha512-yP3ufGaauhj1K0CzgPVyK8HXx235ML+M9Q//sVSa0TqQwt24enhIQxoqFlxE+WusPWyrVmxm8+HYG3ljAMDHyA==
   dependencies:
     "@types/node" "*"
     "@types/request" "*"
@@ -2091,10 +2091,10 @@ node-forge@^0.10.0:
   resolved "https://registry.npmjs.org/node-forge/-/node-forge-0.10.0.tgz"
   integrity sha512-PPmu8eEeG9saEUvI97fm4OYxXVB6bFvyNTyiUOBichBpFG8A1Ljw3bY62+5oOjDEMHRnd0Y7HQ+x7uzxOzC6JA==
 
-node-telegram-bot-api@^0.52.0:
-  version "0.52.0"
-  resolved "https://registry.npmjs.org/node-telegram-bot-api/-/node-telegram-bot-api-0.52.0.tgz"
-  integrity sha512-HOOHJ14OcuAWcVZQb5kth2lrWJeeOdaO7XFdYXcJT9Dxpznm7iZDHBq9ODLknDTE4dhDMDL6TsjjgYV468gtDQ==
+node-telegram-bot-api@^0.57.0:
+  version "0.57.0"
+  resolved "https://registry.yarnpkg.com/node-telegram-bot-api/-/node-telegram-bot-api-0.57.0.tgz#eedd1958c629eab2bdf4c823de3205f1c3bf57ba"
+  integrity sha512-joLDEfPBB9BYi9ClB7X1+YGhlu5m/wB4YtM80jzHsFVtmfJn93bwpJsdh7DcA4lEVaxw7TsnIT0tux3ZLmk3vw==
   dependencies:
     array.prototype.findindex "^2.0.2"
     bl "^1.2.3"
